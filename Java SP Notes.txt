@@ -26,7 +26,8 @@ t.customer(); t.product(); t.selection(); t.billing();
 Test t1 = new Test();
 t1.deliveryManager(); //this method is calling four methods to complete our task.
 }
-};
+};
+
 
 *************************************************************************************
 
@@ -127,7 +128,8 @@ t.add(); t.mul();
 }//end main
 }//end class
 In above example local variables and instance variables having different names hence this
-keyword not required.
+keyword not required.
+
 
 
 
@@ -152,6 +154,11 @@ o By using pattern factory method
 o By using new operator.
 o By using Deserialization .
 o By using newInstance() method.
-o By using clone() method…….etc
+o By using clone() methodâ€¦â€¦.etc
 ? When we create object by using new operator after new keyword that part is constructor then
 constructor execution will be done.
+
+Inside the class if we declaring at least one constructor (either 0-arg or parameterized) the
+compiler wonâ€™t generate default constructor.
+
+*************************************************************************
