@@ -1,0 +1,157 @@
+
+
+Example 16 :- Template method:-
+? Let Assume to complete your task you must call four methods at that situation you must
+remember number of methods and order of calling. 
+JAVA Means DURGA SOFT
+53 | P a g e
+? To overcome above limitation take one x( ) method it is calling four methods internally to
+complete our task then instead of calling four methods every time call x( ) method that perform
+our task that x( ) method is called template method.
+class Test
+{ void customer() { System.out.println("customer part");}
+void product() { System.out.println("product part"); }
+void selection() { System.out.println("selection part"); }
+void billing() { System.out.println("billing part"); }
+void deliveryManager() //template method
+{ System.out.println("****Template method***");
+//template method is calling four methods in order to complete our task.
+customer(); product(); selection(); billing();
+}
+public static void main(String[] args)
+{ //normal approach
+Test t = new Test();
+t.customer(); t.product(); t.selection(); t.billing();
+//by using template method
+Test t1 = new Test();
+t1.deliveryManager(); //this method is calling four methods to complete our task.
+}
+};
+
+*************************************************************************************
+
+
+Example 18 :- Stack Mechanism:-
+? In java program execution starts from main method, just before program execution JVM creates
+one empty stack for that application.
+
+? Whenever JVM calling particular method then that method entry and local variables of that
+method stored in stack memory.
+
+? When the method exists, that particular method entry and local variables of that method are
+deleted from memory that memorybecomes available to other called methods.
+
+? Based on 2 & 3 the local variables are stored in stack memory and for these variables memory is
+allocated when method starts and memory is deleted when program ends.
+
+? The intermediate calculations are stored in stack memory at final if all methods are completed
+that stack will become empty then that empty stack is destroyed by JVM just before program
+completes.
+
+? The empty stack is created by JVM and at final empty stack is destroyed by JVM. 
+
+
+
+********************************************************************************************
+
+this keyword:-
+this keyword is holding current class reference variable and it is used to represent,
+a. Current class variables.
+b. Current class methods.
+c. Current class constructors. 
+
+Example :
+
+This keyword not required:-
+class Test
+{ //instance variables
+int a=100;
+int b=200;
+void add(int i,int j)//local variables
+{ System.out.println(a+b);//instance variables addition
+System.out.println(i+j);//local variables addition
+}
+public static void main(String[] args)
+{ Test t = new Test();
+JAVA Means DURGA SOFT
+56 | P a g e
+t.add(10,20);
+}
+}
+In above exmple instance variables and local variables having different names so this keyword
+not required.
+
+
+
+This keyword required:-
+class Test
+{ //instance variables
+int a=100;
+int b=200;
+void add(int a,int b)//local variables
+{ System.out.println(a+b);//local variables addition
+System.out.println(this.a+this.b);//instance variables addition
+}
+public static void main(String[] args)//static method
+{ Test t = new Test();
+t.add(10,20);
+}
+}
+In bove example intstance variables and local variables having same name at that situation we
+are able to print local variables directly but to represent instance variables use this keyword. 
+
+
+***********************************************************************************************
+
+Conversion of local variables to instance variables
+
+
+Conversion of local variables to instacevariables:-
+This keyword not Required:-
+class Test
+{ int i, j; //instance variables
+void values(int val1,int val2)//local variables
+{ //conversion of local variables to instance variables (passing local variable
+values to instance variables)
+i=val1;
+j=val2;
+}
+void add(){System.out.println(i+j);}
+void mul(){System.out.println(i*j);}
+
+
+public static void main(String[] args)
+{ Test t=new Test();
+t.values(100,200);
+t.add(); t.mul();
+}//end main
+}//end class
+In above example local variables and instance variables having different names hence this
+keyword not required.
+
+
+
+
+
+
+****************************************************************************************************
+Constructors -CONSTRUCTORS-constructors-Constructors-CONSTRUCTORS
+
+
+1. When we create new instance (Object) of a class using new keyword, a constructor for that
+class is called.
+
+2. Constructors are used to initialize the instance variables of a class
+
+New keyword :-
+? new keyword is used to create object in java.
+? Different approaches are there create objects like
+o By usinginstance factory method.
+o By using static factory method
+o By using pattern factory method
+o By using new operator.
+o By using Deserialization .
+o By using newInstance() method.
+o By using clone() method…….etc
+? When we create object by using new operator after new keyword that part is constructor then
+constructor execution will be done.
