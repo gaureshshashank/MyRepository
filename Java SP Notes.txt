@@ -26,8 +26,7 @@ t.customer(); t.product(); t.selection(); t.billing();
 Test t1 = new Test();
 t1.deliveryManager(); //this method is calling four methods to complete our task.
 }
-};
-
+};
 
 *************************************************************************************
 
@@ -128,8 +127,7 @@ t.add(); t.mul();
 }//end main
 }//end class
 In above example local variables and instance variables having different names hence this
-keyword not required.
-
+keyword not required.
 
 
 
@@ -154,11 +152,248 @@ o By using pattern factory method
 o By using new operator.
 o By using Deserialization .
 o By using newInstance() method.
-o By using clone() methodâ€¦â€¦.etc
+o By using clone() method…….etc
 ? When we create object by using new operator after new keyword that part is constructor then
 constructor execution will be done.
 
-Inside the class if we declaring at least one constructor (either 0-arg or parameterized) the
-compiler wonâ€™t generate default constructor.
 
-*************************************************************************
+*********************************************
+Rules to declare constructor:-
+1) Constructor name class name must be same.
+2) Constructor is able to take parameters.
+3) Constructor not allowed explicit return type (return type declaration not possible)
+
+*********************************************
+
+There are two types of constructors,
+1) Default Constructor (provided by compiler).
+2) User defined Constructor (provided by user) or parameterized constructor.
+
+
+Default Constructor:-
+1) If we are not write constructor for a class then compiler generates one constructor for you that
+constructor is called default constructor. And it is not visible in code.
+2) Compiler generates Default constructor inside the class when we are not providing any type of
+constructor (0-arg or parameterized).
+3) The compiler generated default constructor is always 0-argumnetconstructor with empty
+implementation (empty body).
+
+
+*Inside the class if we declaring at least one constructor (either 0-arg or parameterized) the
+compiler won’t generate default constructor
+
+class Test
+{ Test(int i)
+{ System.out.println(i); }
+Test(int i,String str)
+{ System.out.println(i);
+System.out.println(str); }
+public static void main(String[] args)
+{Test t1=new Test(); // in this line compiler is searching 0-arg cons but not available
+Test t2=new Test(10);
+Test t3=new Test(100,"rattaiah");
+}
+}
+
+
+Note: - in above example during object creation user provided 0-arg constructor executed
+used to initialize some values to instance variables. 
+To overcome above limitation just use parameterized constructor to initialize different values. 
+
+
+? Constructors are performing following operations
+
+o Constructors are useful to initialize some user provided values to instance variables
+during object creation.
+o Constructors are used to write the functionality of project that functionality is
+executed during object creation.
+? Inside the class it is possible to declare multiple constructors
+
+
+
+This keyword :-
+To call Current class constructoruse this keyword
+-this(); ----? current class 0-arg constructor calling
+-this(10); ----? current class 1-arg constructor calling
+-this(10 , true); ----? current class 2-arg constructor calling
+-this(10 , ”ratan” , ’a’) ----? current class 3-arg constructor calling
+
+
+
+Inside the constructor this keyword must be first statement otherwise compiler generate error
+message “call to this must be first statement in constructor”.
+Constructor calling must be first statement in constructor.
+No compilation error:-(this keyword first statement)
+Test()
+{ this(10); //current class 1-argument constructor calling
+System.out.println("0 arg");
+}
+Test(int a)
+{ this(10,20); //current class 2-argument constructor calling
+System.out.println(a);
+}
+
+
+
+
+*********************************************
+Note :-
+Every object creation having three parts.
+1) Declaration:-
+Test t; //t is Test type
+Student s; //s is Student type
+A a; //a is A type
+2) Instantiation:-(just object creation)
+new Test(); //Test object
+new Student(); //student object
+new A(); //A object
+3) initialization:-(during object creation perform initialization)
+new Test(10,20); //during object creation 10,20 values initialized
+new Student("ratan",111); //during object creation values are initialized
+new A('a',true) //during object creation values are initialized
+
+
+
+*************************************************
+Example :- in java object creation done in 2-ways.
+1) Named object (having reference variable) Test t = new Test();
+2) Nameless object (without reference variable) new Test();
+class Test
+{ void m1()
+{System.out.println("m1 method");
+}
+public static void main(String[] args)
+{ //named object [having reference variable]
+Test t = new Test();
+t.m1();
+//nameless object [without reference variable`]
+new Test().m1();
+}
+}
+
+****************************************
+
+Example :Two formats of object creation.
+1) Eager object creation.
+2) Lazy object creation.
+class Test
+void m1(){System.out.println("m1 method");}
+public static void main(String[] args)
+{ //Eager object creation approach
+Test t = new Test();
+t.m1();
+//lazy object creation approach
+Test t1;
+;;;;;;;;;;
+t1=new Test();
+t1.m1();
+}
+}
+
+********************************************************
+Example :- assign values to instance variables [constructor vs. method]
+
+class Student
+{ //instance variables
+int sid;
+String sname;
+int smarks;
+//constructor assigning values to instance variables
+Student(int sid,String sname,int smarks) //local variables
+{ //conversion [passing local variable values to instance variables]
+this.sid=sid; this.sname=sname; this.smarks=smarks;
+}
+//method assigning values to instance variables
+void assign(int sid,String sname,int smarks) //local variable
+{ //conversion
+this.sid=sid; this.sname=sname; this.smarks=smarks;
+}
+void disp()
+{ System.out.println("****student Details****");
+System.out.println("student name = "+sname);
+System.out.println("student id = "+sid);
+System.out.println("student mrks = "+smarks);
+}
+
+public static void main(String[] args)
+{ Student s = new Student(111,"ratan",100);
+s.assign(222,"anu",200);
+s.disp();
+}
+}
+
+
+
+*********************************************************
+Example :- By using constructors copy the values of one object to another object.
+
+class Student
+{ //instance variables
+int sid;
+String sname;
+int smarks;
+Student(int sid,String sname,int smarks)
+{ //conversion [converting localvariable values to instance varaibles]
+this.sid=sid; this.sname=sname; this.smarks=smarks;
+}
+Student(Student s) //constructor expected Student object
+{ this.sid=s.sid; this.sname=s.sname; this.smarks=s.smarks;
+}
+void disp()
+{ System.out.println("****student Details****");
+System.out.println("student name = "+sname);
+System.out.println("student id = "+sid);
+System.out.println("student mrks = "+smarks);
+}
+public static void main(String[] args)
+{ Student s = new Student(111,"ratan",100);
+Student s1 = new Student(s); //constructor is taking Student object
+s.disp();
+s1.disp();
+}
+}
+
+
+
+*************************************************
+Constructor chaining :-
+? One constructor is calling same class constructor is called constructor calling.
+? We are achieving constructor calling by using this keyword.
+? Inside constructor we are able to declare only one this keyword that must be first
+statement of the constructor.
+class Test
+{ Test()
+{ this(10);
+System.out.println("0-arg cons");
+}
+Test(int i)
+{ this(10,20);
+
+System.out.println("1-arg cons");
+}
+Test(int i,int j)
+{ System.out.println("2-arg cons");
+}
+public static void main(String[] args)
+{ new Test();
+}
+}
+
+************************************************************
+
+INSTANCE BLOCKS
+
+Instance Blocks:-
+? Instance blocks are executed during object creation just before constructor execution.
+? Instance blocks execution depends on object creation it means if we are creating 10
+objects 10 times instance blocks are executed.
+
+class Test
+{ { System.out.println("instance block:logics"); }//instance block
+Test()
+{ System.out.println("constructor:logics");
+}
+public static void main(String[] args)
+{ Test t = new Test();
+}
+}
