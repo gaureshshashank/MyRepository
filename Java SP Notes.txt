@@ -397,3 +397,227 @@ public static void main(String[] args)
 { Test t = new Test();
 }
 }
+
+
+******************************************************************
+
+Example 1:-
+class Test
+{ { System.out.println("instance block:logics"); }//instance block
+Test()
+{ System.out.println("constructor:logics");
+}
+public static void main(String[] args)
+{ Test t = new Test();
+}
+}
+
+
+
+************************************
+
+Example 2:-
+class Test
+{ { System.out.println("instance block-1:logics"); }
+Test() { System.out.println("0-arg constructor:logics"); }
+{ System.out.println("instance block-2:logics"); }
+Test(int a)
+{ System.out.println("1-arg constructor:logics"); }
+public static void main(String[] args)
+{ Test t1 = new Test();
+Test t2 = new Test();
+Test t3 = new Test(10);
+}
+}
+
+
+******************************************************************
+Example 3:-
+class Test
+{ { System.out.println("instance block-1:logics"); }
+Test()
+{ this(10);
+JAVA Means DURGA SOFT
+71 | P a g e
+System.out.println("0-arg constructor:logics"); }
+Test(int a)
+{ System.out.println("1-arg constructor:logics");
+}
+public static void main(String[] args)
+{ Test t1 = new Test();
+}
+}
+
+
+************************************************************************
+
+Example 1:-
+class Test
+{ {System.out.println("instance block");} //instance block
+int a=m1(); //instance variables
+int m1()
+{System.out.println("m1() method called by variable");
+return 100;
+}
+public static void main(String[] args)
+{ Test t = new Test();
+}
+}
+D:\morn11>java Test
+instance block
+m1() method called by variable
+
+
+
+
+**********************************************************************
+
+class Test
+{ int a=m1(); //instance varaibles
+int m1()
+{System.out.println("m1() method called by variable");
+return 100;
+}
+{ System.out.println("instance block");} //static blocks
+public static void main(String[] args)
+{ Test t = new Test();
+}
+}
+
+***********************************************
+? instance blocks are used to initialize instance variables during object creation but before
+constructor execution
+
+
+************************************************
+Static block:-
+
+? Static blocks are used to write functionality of project that functionality is executed
+during .class file loading time.
+? In java .class file is loaded only one time hence static blocks are executed once per class. 
+
+
+
+***************************************************************
+Example :-
+class Test
+{ static{System.out.println("static block");}
+public static void main(String[] args)
+{
+}
+}
+
+***************************************************************
+Example :-
+class Test
+{ static{System.out.println("static block-1");} //static block
+static{System.out.println("static block-2");} //static block
+{System.out.println("instance block-1");} //instance block
+{System.out.println("instance block-2");} //instance block
+Test(){ System.out.println("0-arg constructor"); } //0-arg constructor
+Test(int a){ System.out.println("1-arg constructor"); }//1-arg constructor
+JAVA Means DURGA SOFT
+73 | P a g e
+public static void main(String[] args)
+{ Test t1 = new Test(); //instance block & constructor executed
+Test t2 = new Test(10); //instance blocks & constructor executed
+}
+}
+D:\morn11>java Test
+static block-1
+static block-2
+instance block-1
+instance block-2
+0-arg constructor
+instance block-1
+instance block-2
+1-arg constructor
+
+
+**************************************************************
+
+Example:-
+class Test
+{ //instance variables
+int a=10,b=20;
+//static variables
+static int c=30,d=40;
+//instance method
+int m1(int a,int b)//local variables
+{ System.out.println(a+”---”+b);
+return 10;
+}
+//static method
+static String m2(boolean b) //local variables
+{ System.out.println(b);
+return "ratan";
+}
+Test(int a) //constructor with 1-arg
+{ System.out.println("1-arg constructor");
+}
+Test(int a,int b) //constructor with 2-arg
+{ System.out.println("2-arg constructor");
+}
+{System.out.println("instance block-1");} //instance block
+{System.out.println("instance block-2");} //instance block
+static {System.out.println("static block-1");} //static block
+static {System.out.println("static block-2");} //static block
+public static void main(String[] args)
+{ //Test object created with 1-arg constructor
+Test t1 = new Test(10); //1-arg constructor & instance blocks executed
+JAVA Means DURGA SOFT
+74 | P a g e
+//Test object created with 2-arg constructor
+Test t2 = new Test(100,200); //2-arg constructor & instance blocks executed
+//printing instance variables by using Object name
+System.out.println(t1.a);
+System.out.println(t1.b);
+//printing static variables by using class name
+System.out.println(Test.c);
+System.out.println(Test.d);
+//instnace method calling by using object name
+int x = t1.m1(1000,2000);
+System.out.println(“m1() method return value:-”+x); //printing return value
+//static method calling by using class name
+String y = Test.m2(true);
+System.out.println(“m2() method return value:-”+y); //printing return value
+}
+};
+
+
+
+
+
+
+**************************************************************************
+OOPS Concepts
+
+1.Inheritance.
+2.Polymorphism
+3.Abstraction
+4.Encapsulation
+
+
+
+*************
+Inheritance:-
+*************
+1. The process of acquiring fields(variables) and methods(behaviors) from one class to another class
+is called inheritance.
+2. The main objective of inheritance is code extensibility whenever we are extending class
+automatically the code is reused.
+3. In inheritance one class giving the properties and behavior & another class is taking the
+properties and behavior.
+4. Inheritance is also known as is-a relationship. By using extends keyword we are achieving
+inheritance concept.
+5. extends keyword used to achieve inheritance & it is providing relationship between two classes
+when you make relationship then able to reuse the code.
+6. In java parent class is giving properties to child class and Child is acquiring properties from
+Parent.
+7. To reduce length of the code and redundancy of the code sun people introduced inheritance
+concept.
+
+
+******************************
+In the absence of any other explicit super class, every class is implicitly a subclass of Object class.
+******************************
